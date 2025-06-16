@@ -1,0 +1,41 @@
+@page
+@model ProductCatalog.Pages.EventosModel
+@{
+    ViewData["Title"] = "Eventos";
+}
+
+<div class="container">
+    <h2 class="mb-4">Cadastro de Eventos</h2>
+
+    <form method="post">
+        <div class="form-group">
+            <label asp-for="Evento.Titulo">Título do Evento</label>
+            <input asp-for="Evento.Titulo" class="form-control" />
+            <span asp-validation-for="Evento.Titulo" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Evento.Data">Data do Evento</label>
+            <input asp-for="Evento.Data" class="form-control" type="datetime-local" />
+            <span asp-validation-for="Evento.Data" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Evento.Local">Local</label>
+            <input asp-for="Evento.Local" class="form-control" />
+            <span asp-validation-for="Evento.Local" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary mt-3">Cadastrar Evento</button>
+    </form>
+
+    @if (Model.Evento != null)
+    {
+        <div class="alert alert-success mt-4">
+            <h4>Evento Cadastrado com Sucesso!</h4>
+            <p>Título: @Model.Evento.Titulo</p>
+            <p>Data: @Model.Evento.Data.ToString("dd/MM/yyyy HH:mm")</p>
+            <p>Local: @Model.Evento.Local</p>
+        </div>
+    }
+</div> 
